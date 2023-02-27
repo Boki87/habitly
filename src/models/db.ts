@@ -23,5 +23,8 @@ db.on("populate", async () => {
     desc: "Change me, im a starter habit 😬",
     color: "blue",
     freq: 3,
+    useReminder: false,
+    reminderTime: "",
+    reminderText: "",
   });
 });
