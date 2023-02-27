@@ -1,9 +1,25 @@
-import { useState, useRef, useEffect, useMemo, SyntheticEvent } from "react";
+import {
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  SyntheticEvent,
+  ReactNode,
+} from "react";
 import { Habit } from "@/types/Habit";
 import { HabitEntry } from "@/types/HabitEntry";
 import { isSameDay } from "date-fns";
 import { FaCheck } from "react-icons/fa";
 import { db } from "@/models/db";
+import ConfettiExplosion, { ConfettiProps } from "react-confetti-explosion";
+
+const mediumProps: ConfettiProps = {
+  force: 0.6,
+  duration: 2500,
+  particleCount: 100,
+  width: 800,
+  colors: ["#BCE29E", "#E5EBB2", "#F8C4B4", "#FF8787", "#FEBE8C", "#A3DDDD"],
+};
 
 interface IHabitCard {
   weeklyData?: HabitEntry[];
@@ -20,6 +36,8 @@ export default function HabitCard({
 }: IHabitCard) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [progressSize, setProgressSize] = useState(40);
+  const [isConfettiExploding, setIsConfettiExploding] = useState(false);
+
   const entries = useMemo(
     () => weeklyData?.filter((e) => e.habitId === habit.id) || [],
     [habit, weeklyData]
@@ -66,6 +84,14 @@ export default function HabitCard({
       setProgressSize(w > 40 ? w : 40);
     }
   }, [containerRef, weeklyData]);
+
+  useEffect(() => {
+    if (entries.length === habit.freq) {
+      setIsConfettiExploding(true);
+    } else {
+      setIsConfettiExploding(false);
+    }
+  }, [entries, habit.freq]);
 
   return (
     <div
@@ -119,7 +145,9 @@ export default function HabitCard({
             }}
             color={habit.color}
             isChecked={isChecked}
-          />
+          >
+            {isConfettiExploding && <ConfettiExplosion {...mediumProps} />}
+          </CheckBoxButton>
         </div>
         <span className="text-gray-600">{habit.desc}</span>
       </div>
@@ -130,10 +158,12 @@ export default function HabitCard({
 function CheckBoxButton({
   isChecked,
   color,
+  children,
   ...rest
 }: {
   isChecked: boolean;
   color: string;
+  children?: ReactNode;
   [x: string]: any;
 }) {
   return (
@@ -147,6 +177,7 @@ function CheckBoxButton({
       {...rest}
     >
       <FaCheck />
+      {children}
     </button>
   );
 }

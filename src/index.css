@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html, body, #root {
+    height: 100%;
+}
+
+:root {
+        --color-green: #BCE29E;
+        --color-lime: #E5EBB2;
+        --color-rose: #F8C4B4;
+        --color-pink: #FF8787;
+        --color-brown: #FEBE8C;
+        --color-blue: #A3DDDD;
+        --color-ice: #ADCECE
+}

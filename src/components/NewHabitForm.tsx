@@ -10,14 +10,13 @@ import { FaTrash } from "react-icons/fa";
 import { format } from "date-fns";
 import { colors } from "./ColorPicker";
 
-const timeNow = format(new Date(), "HH:mm").toString();
 const emptyHabit = {
   title: "",
   desc: "",
   color: "",
   freq: 1,
   useReminder: false,
-  reminderTime: timeNow,
+  reminderTime: "",
   reminderText: "",
 };
 
@@ -65,11 +64,13 @@ export default function NewHabitForm() {
   }
 
   useEffect(() => {
-    //set random initial color
     if (showHabitModal) {
+      //set random initial color
       const color = colors[Math.floor(Math.random() * colors.length)];
+      //set reminder time to now
+      const reminderTime = format(new Date(), "HH:mm").toString();
       setHabitState((old) => {
-        return { ...old, color };
+        return { ...old, color, reminderTime };
       });
     }
   }, [showHabitModal]);
