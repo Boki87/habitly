@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST={"index.tsx -> ../components/HabitList":{"id":"index.tsx -> ../components/HabitList","files":["static/chunks/src_components_HabitList_tsx.js"]}}
