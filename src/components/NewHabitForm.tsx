@@ -64,7 +64,7 @@ export default function NewHabitForm() {
   }
 
   useEffect(() => {
-    if (showHabitModal) {
+    if (showHabitModal && !activeHabit) {
       //set random initial color
       const color = colors[Math.floor(Math.random() * colors.length)];
       //set reminder time to now
@@ -73,7 +73,7 @@ export default function NewHabitForm() {
         return { ...old, color, reminderTime };
       });
     }
-  }, [showHabitModal]);
+  }, [showHabitModal, activeHabit]);
 
   return (
     <div className="w-full">
