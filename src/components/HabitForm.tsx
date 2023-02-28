@@ -63,6 +63,10 @@ export default function NewHabitForm() {
     setShowHabitModal(false);
   }
 
+  function toggleReminder() {
+    setHabitState((old) => ({ ...old, useReminder: !old.useReminder }));
+  }
+
   useEffect(() => {
     if (showHabitModal && !activeHabit) {
       //set random initial color
@@ -178,14 +182,7 @@ export default function NewHabitForm() {
             </span>
           </div>
           <div className="flex items-center">
-            <Toggle
-              value={habitState.useReminder}
-              onChange={() =>
-                setHabitState((old) => {
-                  return { ...old, useReminder: !old.useReminder };
-                })
-              }
-            />
+            <Toggle value={habitState.useReminder} onChange={toggleReminder} />
           </div>
         </div>
         {/* Reminder toggle END */}
