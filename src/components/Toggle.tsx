@@ -8,7 +8,7 @@ export default function Toggle({
   return (
     <div
       onClick={onChange}
-      className={`transition-bg duration-300 ${
+      className={`cursor-pointer transition-bg duration-300 ${
         value ? "bg-green-300" : "bg-gray-200"
       } h-12 w-28 rounded-full relative`}
     >
