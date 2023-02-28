@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <main className="w-full h-full flex items-center justify-center">
+    <main className="w-full h-full flex items-center justify-center bg-gray-100">
       <div
         className="
         min-w-full 
@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         mx-auto 
         sm:rounded-lg 
         overflow-auto 
-        bg-gray-50
+        bg-white
         relative
        sm:border
        sm:border-gray-200

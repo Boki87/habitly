@@ -96,7 +96,7 @@ export default function HabitCard({
   return (
     <div
       ref={containerRef}
-      className="w-full max-w-md bg-white h-28 mb-3 rounded-lg relative overflow-hidden mx-auto"
+      className="w-full max-w-md bg-gray-50 h-28 mb-3 rounded-lg relative overflow-hidden mx-auto shadow-md"
     >
       {/* Progress circle */}
       <div
