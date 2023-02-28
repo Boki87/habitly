@@ -13,14 +13,14 @@ export default function Layout({ children }: { children: ReactNode }) {
         sm:min-h-[800px] 
         mx-auto 
         sm:rounded-lg 
-        overflow-auto 
+        overflow-hidden 
         bg-white
         relative
        sm:border
        sm:border-gray-200
         "
       >
-        <div className="h-full w-full overflow-y-auto pb-8">{children}</div>
+        <div className="h-full w-full overflow-y-auto">{children}</div>
       </div>
     </main>
   );

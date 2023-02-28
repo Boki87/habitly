@@ -33,12 +33,12 @@ export default function DayOfWeekPicker({
 
   return (
     <>
-      <div className="flex items-center justify-center w-full max-w-lg mt-10 mb-2 mx-auto">
+      <div className="flex items-center justify-center w-full max-w-lg mt-1 mb-2 mx-auto">
         <span className="text-lg">
           Activity for <strong>{format(selectedDate, "dd  MMMM yyyy")}</strong>
         </span>
       </div>
-      <div className="w-full max-w-lg mx-auto h-24 mb-4 flex justify-between px-4">
+      <div className="w-full max-w-lg mx-auto min-h-[96px] mb-4 flex justify-between px-4">
         {daysInWeek?.map((day) => {
           let isSelectedDay = isSameDay(day, selectedDate);
           let isToday = isSameDay(d, day);

@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa";
 import HabitModal from "@/components/HabitModal";
 import { useStore } from "@/components/Store";
 import HabitList from "./components/HabitList";
+import Header from "@/components/Header";
 
 export default function App() {
   const {
@@ -22,7 +23,14 @@ export default function App() {
 
   return (
     <Layout>
-      <div className="absolute top-0 left-0 w-full h-full overflow-auto">
+      <Header
+        onBurgerClick={() => {}}
+        onPlusClick={() => {
+          setActiveHabit(null);
+          setShowHabitModal(true);
+        }}
+      />
+      <div className="absolute top-16 left-0 w-full h-full pt-2 z-10 pb-20 flex flex-col">
         <DayOfWeekPicker
           selectedDate={selectedDate}
           onDateChange={changeDateHandler}
@@ -34,18 +42,6 @@ export default function App() {
             setShowHabitModal(true);
           }}
         />
-        <div className="px-4">
-          <button
-            onClick={() => {
-              setActiveHabit(null);
-              setShowHabitModal(true);
-            }}
-            className="flex items-center justify-center w-full h-10 bg-gray-100 rounded-lg cursor-pointer hover:brightness-95 active:brightness-90 uppercase font-bold text-gray-600 max-w-md mx-auto shadow-md active:shadow-sm"
-          >
-            <FaPlus />
-            <span className="ml-2">new habit</span>
-          </button>
-        </div>
       </div>
 
       <AnimatePresence>{showHabitModal && <HabitModal />}</AnimatePresence>

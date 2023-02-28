@@ -14,7 +14,7 @@ export default function HabitList({
   const habitEntries = useLiveQuery(() => db.habitEntries.toArray());
 
   return (
-    <div className="px-4">
+    <div className="px-4 flex-1 overflow-auto">
       {habits?.map((habit) => {
         return (
           <HabitCard
