@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import NewHabitForm from "./NewHabitForm";
+import HabitForm from "./HabitForm";
 import { useStore } from "./Store";
 export default function HabitModal() {
   const { setShowHabitModal } = useStore();
@@ -19,7 +19,7 @@ export default function HabitModal() {
         transition={{ duration: 0.3 }}
         className="min-w-full min-h-[95%] bottom-0 left-0 absolute z-50 bg-white rounded-t-lg"
       >
-        <NewHabitForm />
+        <HabitForm />
       </motion.div>
     </>
   );
