@@ -1,11 +1,11 @@
 import DayOfWeekPicker from "@/components/DayOfWeekPicker";
 import Layout from "@/components/Layout";
 import { AnimatePresence } from "framer-motion";
-import { FaPlus } from "react-icons/fa";
 import HabitModal from "@/components/HabitModal";
 import { useStore } from "@/components/Store";
 import HabitList from "./components/HabitList";
 import Header from "@/components/Header";
+import MainMenu from "./components/MainMenu";
 
 export default function App() {
   const {
@@ -15,6 +15,8 @@ export default function App() {
     activeHabit,
     setShowHabitModal,
     setActiveHabit,
+    showMainMenu,
+    setShowMainMenu,
   } = useStore();
 
   function changeDateHandler(date: Date) {
@@ -24,7 +26,9 @@ export default function App() {
   return (
     <Layout>
       <Header
-        onBurgerClick={() => {}}
+        onBurgerClick={() => {
+          setShowMainMenu(true);
+        }}
         onPlusClick={() => {
           setActiveHabit(null);
           setShowHabitModal(true);
@@ -45,6 +49,7 @@ export default function App() {
       </div>
 
       <AnimatePresence>{showHabitModal && <HabitModal />}</AnimatePresence>
+      <AnimatePresence>{showMainMenu && <MainMenu />}</AnimatePresence>
     </Layout>
   );
 }

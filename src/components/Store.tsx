@@ -8,6 +8,8 @@ interface IInitialState {
   setShowHabitModal: (v: boolean) => void;
   activeHabit: Habit | null;
   setActiveHabit: (v: Habit | null) => void;
+  showMainMenu: boolean;
+  setShowMainMenu: (v: boolean) => void;
 }
 
 const initialState: IInitialState = {
@@ -17,6 +19,8 @@ const initialState: IInitialState = {
   setShowHabitModal: () => {},
   activeHabit: null,
   setActiveHabit: () => {},
+  showMainMenu: false,
+  setShowMainMenu: () => {},
 };
 
 const StoreProvider = createContext(initialState);
@@ -26,6 +30,7 @@ export const useStore = () => useContext(StoreProvider);
 export default function Store({ children }: { children: ReactNode }) {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [showHabitModal, setShowHabitModal] = useState(false);
+  const [showMainMenu, setShowMainMenu] = useState(false);
   const [activeHabit, setActiveHabit] = useState<Habit | null>(null);
 
   return (
@@ -37,6 +42,8 @@ export default function Store({ children }: { children: ReactNode }) {
         setShowHabitModal,
         activeHabit,
         setActiveHabit,
+        showMainMenu,
+        setShowMainMenu,
       }}
     >
       {children}
