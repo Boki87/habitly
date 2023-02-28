@@ -40,7 +40,7 @@ export default function App() {
               setActiveHabit(null);
               setShowHabitModal(true);
             }}
-            className="flex items-center justify-center w-full h-10 bg-gray-100 rounded-lg cursor-pointer hover:brightness-95 active:brightness-90 uppercase font-bold text-gray-600 max-w-md mx-auto"
+            className="flex items-center justify-center w-full h-10 bg-gray-100 rounded-lg cursor-pointer hover:brightness-95 active:brightness-90 uppercase font-bold text-gray-600 max-w-md mx-auto shadow-md active:shadow-sm"
           >
             <FaPlus />
             <span className="ml-2">new habit</span>
