@@ -27,14 +27,14 @@ export default function App() {
     <Layout>
       <Header
         onBurgerClick={() => {
-          setShowMainMenu(true);
+          setShowMainMenu(!showMainMenu);
         }}
         onPlusClick={() => {
           setActiveHabit(null);
           setShowHabitModal(true);
         }}
       />
-      <div className="absolute top-16 left-0 w-full h-full pt-2 z-10 pb-20 flex flex-col">
+      <div className="w-full h-full pt-20 flex flex-col">
         <DayOfWeekPicker
           selectedDate={selectedDate}
           onDateChange={changeDateHandler}
@@ -49,7 +49,6 @@ export default function App() {
       </div>
 
       <AnimatePresence>{showHabitModal && <HabitModal />}</AnimatePresence>
-      <AnimatePresence>{showMainMenu && <MainMenu />}</AnimatePresence>
     </Layout>
   );
 }
