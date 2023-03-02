@@ -35,7 +35,7 @@ export default function DayOfWeekPicker({
     <>
       <div className="flex items-center justify-center w-full max-w-lg mt-1 mb-2 mx-auto">
         <span className="text-lg">
-          Activity for <strong>{format(selectedDate, "dd  MMMM yyyy")}</strong>
+          Activity for <strong>{format(selectedDate, "d  MMMM yyyy")}</strong>
         </span>
       </div>
       <div className="w-full max-w-lg mx-auto min-h-[96px] mb-4 flex justify-between px-4">

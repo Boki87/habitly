@@ -48,7 +48,6 @@ export default function App() {
         />
       </div>
 
-      <AnimatePresence>{showHabitModal && <HabitModal />}</AnimatePresence>
     </Layout>
   );
 }
