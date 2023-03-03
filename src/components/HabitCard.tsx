@@ -86,7 +86,7 @@ export default function HabitCard({
   }, [containerRef, weeklyData]);
 
   useEffect(() => {
-    if (entries.length === habit.freq) {
+    if (entries.length >= habit.freq) {
       setIsConfettiExploding(true);
     } else {
       setIsConfettiExploding(false);
@@ -173,7 +173,7 @@ function CheckBoxButton({
       style={{
         background: isChecked ? `var(--color-${color})` : "",
       }}
-      className={`w-8 h-8 rounded-md flex items-center justify-center active:brightness-90 text-gray-500 dark:text-gray-300 ${
+      className={`w-8 h-8 rounded-md flex items-center justify-center hover:brightness-95 active:brightness-90 text-gray-500 dark:text-gray-300 ${
         isChecked
           ? "text-gray-700 dark:text-white"
           : "bg-gray-200 dark:bg-gray-500 "
