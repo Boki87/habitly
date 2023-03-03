@@ -36,7 +36,7 @@ export default function MainMenu() {
             }
           }}
           key={item.title}
-          className="flex items-center pl-3 h-14 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 text-2xl mb-3 text-gray-900 dark:text-gray-50"
+          className="flex items-center pl-3 h-14 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 text-2xl mb-3 text-gray-900 dark:text-gray-50"
         >
           {item.icon}
           <span className="ml-4 text-gray-600 dark:text-gray-100">

@@ -14,6 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     showHabitModal,
     showSettings,
     showOrdering,
+    setShowHabitModal,
   } = useStore();
 
   return (
@@ -39,7 +40,10 @@ export default function Layout({ children }: { children: ReactNode }) {
       >
         <MainMenu />
         <motion.div
-          animate={{ x: showMainMenu ? "85%" : 0 }}
+          animate={{
+            x: showMainMenu ? "85%" : 0,
+            scale: showHabitModal || showMainMenu ? 0.96 : 1,
+          }}
           className="h-full w-full overflow-y-auto absolute top-0 left-0 z-20 bg-white dark:bg-gray-800"
           style={{ boxShadow: "-22px 0px 24px -10px rgba(0,0,0,0.37)" }}
         >

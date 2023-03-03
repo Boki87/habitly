@@ -1,3 +1,4 @@
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { Habit } from "@/types/Habit";
 import { createContext, useContext, useState, ReactNode } from "react";
 
@@ -14,6 +15,8 @@ interface IInitialState {
   setShowSettings: (v: boolean) => void;
   showOrdering: boolean;
   setShowOrdering: (v: boolean) => void;
+  startOfWeek: 1 | 0;
+  setStartOfWeek: (val: 1 | 0) => void;
 }
 
 const initialState: IInitialState = {
@@ -29,6 +32,8 @@ const initialState: IInitialState = {
   setShowSettings: () => {},
   showOrdering: false,
   setShowOrdering: () => {},
+  startOfWeek: 1,
+  setStartOfWeek: () => {},
 };
 
 const StoreProvider = createContext(initialState);
@@ -42,6 +47,10 @@ export default function Store({ children }: { children: ReactNode }) {
   const [showSettings, setShowSettings] = useState(false);
   const [showOrdering, setShowOrdering] = useState(false);
   const [activeHabit, setActiveHabit] = useState<Habit | null>(null);
+  const [startOfWeek, setStartOfWeek] = useLocalStorage(
+    "habilty-weekstarts",
+    1
+  );
 
   return (
     <StoreProvider.Provider
@@ -58,6 +67,8 @@ export default function Store({ children }: { children: ReactNode }) {
         setShowSettings,
         showOrdering,
         setShowOrdering,
+        startOfWeek,
+        setStartOfWeek,
       }}
     >
       {children}

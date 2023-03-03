@@ -4,6 +4,7 @@ import { useStore } from "@/components/Store";
 import HabitList from "./components/HabitList";
 import Header from "@/components/Header";
 import { useDarkMode } from "./hooks/useDarkMode";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 export default function App() {
   useDarkMode();
@@ -14,6 +15,7 @@ export default function App() {
     setActiveHabit,
     showMainMenu,
     setShowMainMenu,
+    startOfWeek,
   } = useStore();
 
   function changeDateHandler(date: Date) {
@@ -35,6 +37,7 @@ export default function App() {
         <DayOfWeekPicker
           selectedDate={selectedDate}
           onDateChange={changeDateHandler}
+          startOfWeekDay={startOfWeek}
         />
         <HabitList
           selectedDate={selectedDate}

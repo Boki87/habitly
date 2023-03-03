@@ -149,7 +149,9 @@ export default function HabitCard({
             {isConfettiExploding && <ConfettiExplosion {...mediumProps} />}
           </CheckBoxButton>
         </div>
-        <span className="text-gray-600 dark:text-gray-100">{habit.desc}</span>
+        <p className="text-gray-600 dark:text-gray-100 truncate">
+          {habit.desc}
+        </p>
       </div>
     </div>
   );

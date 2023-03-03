@@ -17,7 +17,7 @@ export default function SettingsModal() {
         <div className="flex-1"></div>
         <button
           onClick={() => setShowOrdering(false)}
-          className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-300 text-gray-700 flex items-center justify-center hover:text-gray-800 hover:brightness-95 active:brightness-90"
+          className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-400 text-gray-700 flex items-center justify-center hover:text-gray-800 hover:brightness-95 active:brightness-90"
         >
           <IoCloseOutline />
         </button>
