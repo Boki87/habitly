@@ -87,16 +87,16 @@ export default function NewHabitForm() {
           <button
             type="button"
             onClick={() => setShowHabitModal(false)}
-            className="h-8 px-3 text-gray-500 hover:text-gray-700 active:text-gray-900 min-w-[100px]"
+            className="h-8 px-3 text-gray-500 dark:text-gray-200 hover:brightness-95 active:brightness-90 min-w-[100px]"
           >
             Cancel
           </button>
-          <span className="text-xl text-gray-600">
+          <span className="text-xl text-gray-600 dark:text-white">
             {!activeHabit ? "New Habit" : habitState.title}
           </span>
           <button
             type="submit"
-            className="h-8 px-3 text-gray-500 hover:text-gray-700 active:text-gray-900 min-w-[100px]"
+            className="h-8 px-3 text-gray-500 dark:text-gray-200 hover:brightness-95 active:brightness-90 min-w-[100px]"
           >
             Done
           </button>
@@ -149,24 +149,28 @@ export default function NewHabitForm() {
         {/* Habit Frequency */}
         <div className="flex px-4 h-20">
           <div className="flex flex-col h-full flex-1 justify-center">
-            <span className="text-2xl text-gray-700 font-bold">Frequency</span>
-            <span className="text-md text-gray-500 -mt-1">Times a week</span>
+            <span className="text-2xl text-gray-700 dark:text-white font-bold">
+              Frequency
+            </span>
+            <span className="text-md text-gray-500 dark:text-gray-300 -mt-1">
+              Times a week
+            </span>
           </div>
           <div className="flex items-center">
             <button
               type="button"
               onClick={decreesFreq}
-              className="w-10 h-10 bg-gray-100 rounded-md flex items-center justify-center active:brightness-90 hover:brightness-95"
+              className="w-10 h-10 bg-gray-100 dark:bg-gray-500 rounded-md flex items-center justify-center active:brightness-90 hover:brightness-95"
             >
               -
             </button>
-            <span className="w-8 text-center text-xl text-gray-700">
+            <span className="w-8 text-center text-xl text-gray-700 dark:text-white">
               {habitState.freq}
             </span>
             <button
               type="button"
               onClick={increaseFreq}
-              className="w-10 h-10 bg-gray-100 rounded-md flex items-center justify-center active:brightness-90 hover:brightness-95"
+              className="w-10 h-10 bg-gray-100 dark:bg-gray-500 rounded-md flex items-center justify-center active:brightness-90 hover:brightness-95"
             >
               +
             </button>
@@ -176,8 +180,10 @@ export default function NewHabitForm() {
         {/* Reminder toggle */}
         <div className="flex px-4 h-20 mb-3">
           <div className="flex flex-col h-full flex-1 justify-center">
-            <span className="text-2xl text-gray-700 font-bold">Reminder</span>
-            <span className="text-md text-gray-500 -mt-1">
+            <span className="text-2xl text-gray-700 dark:text-white font-bold">
+              Reminder
+            </span>
+            <span className="text-md text-gray-500 dark:text-gray-300 -mt-1">
               Just notifications
             </span>
           </div>
