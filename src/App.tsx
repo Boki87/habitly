@@ -1,18 +1,15 @@
 import DayOfWeekPicker from "@/components/DayOfWeekPicker";
 import Layout from "@/components/Layout";
-import { AnimatePresence } from "framer-motion";
-import HabitModal from "@/components/HabitModal";
 import { useStore } from "@/components/Store";
 import HabitList from "./components/HabitList";
 import Header from "@/components/Header";
-import MainMenu from "./components/MainMenu";
+import { useDarkMode } from "./hooks/useDarkMode";
 
 export default function App() {
+  useDarkMode();
   const {
     selectedDate,
     setSelectedDate,
-    showHabitModal,
-    activeHabit,
     setShowHabitModal,
     setActiveHabit,
     showMainMenu,
@@ -47,7 +44,6 @@ export default function App() {
           }}
         />
       </div>
-
     </Layout>
   );
 }

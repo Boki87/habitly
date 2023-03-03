@@ -96,11 +96,11 @@ export default function HabitCard({
   return (
     <div
       ref={containerRef}
-      className="w-full max-w-md bg-gray-50 h-20 mb-3 rounded-lg relative overflow-hidden mx-auto"
+      className="w-full max-w-md bg-gray-50 dark:bg-gray-700 h-20 mb-3 rounded-lg relative overflow-hidden mx-auto"
     >
       {/* Progress circle */}
       <div
-        className="flex items-center justify-center absolute rounded-full text-gray-600 text-sm"
+        className="flex items-center justify-center absolute rounded-full text-gray-600 dark:text-gray-50 text-sm"
         style={{
           width: `${progressSize}px`,
           height: `${progressSize}px`,
@@ -120,7 +120,7 @@ export default function HabitCard({
         onClick={() => onSelect(habit)}
       >
         <div className="flex">
-          <span className="text-2xl font-bold text-gray-700 cursor-pointer">
+          <span className="text-2xl font-bold text-gray-700 dark:text-gray-50 cursor-pointer">
             {habit.title}
           </span>
           <div className="flex-1"></div>
@@ -149,7 +149,7 @@ export default function HabitCard({
             {isConfettiExploding && <ConfettiExplosion {...mediumProps} />}
           </CheckBoxButton>
         </div>
-        <span className="text-gray-600">{habit.desc}</span>
+        <span className="text-gray-600 dark:text-gray-100">{habit.desc}</span>
       </div>
     </div>
   );
@@ -171,8 +171,10 @@ function CheckBoxButton({
       style={{
         background: isChecked ? `var(--color-${color})` : "",
       }}
-      className={`w-8 h-8 rounded-md flex items-center justify-center active:brightness-90 ${
-        isChecked ? "" : "bg-gray-200"
+      className={`w-8 h-8 rounded-md flex items-center justify-center active:brightness-90 text-gray-500 dark:text-gray-300 ${
+        isChecked
+          ? "text-gray-700 dark:text-white"
+          : "bg-gray-200 dark:bg-gray-500 "
       }`}
       {...rest}
     >

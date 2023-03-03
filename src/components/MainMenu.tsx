@@ -27,7 +27,7 @@ export default function MainMenu() {
     },
   ];
   return (
-    <div className="w-full h-full absolute top-0 left-0 bg-gray-50 pt-20">
+    <div className="w-full h-full absolute top-0 left-0 bg-gray-50 dark:bg-gray-700 pt-20">
       {menuItems.map((item) => (
         <div
           onClick={() => {
@@ -36,10 +36,12 @@ export default function MainMenu() {
             }
           }}
           key={item.title}
-          className="flex items-center pl-3 h-14 cursor-pointer hover:bg-gray-100 text-2xl mb-3 text-gray-900"
+          className="flex items-center pl-3 h-14 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 text-2xl mb-3 text-gray-900 dark:text-gray-50"
         >
           {item.icon}
-          <span className="ml-4 text-gray-600">{item.title}</span>
+          <span className="ml-4 text-gray-600 dark:text-gray-100">
+            {item.title}
+          </span>
         </div>
       ))}
     </div>

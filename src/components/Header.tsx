@@ -8,11 +8,11 @@ export default function Header({
   onPlusClick?: () => void;
 }) {
   return (
-    <div className="h-16 w-full border-b border-b-gray-150 flex items-center justify-between px-4 bg-white z-20 absolute top-0 left-0">
-      <button onClick={onBurgerClick} className="text-3xl text-gray-700">
+    <div className="h-16 w-full border-b border-b-gray-150 dark:border-b-gray-700 flex items-center justify-between px-4 bg-white dark:bg-gray-800 z-20 absolute top-0 left-0 text-gray-700 dark:text-gray-100">
+      <button onClick={onBurgerClick} className="text-3xl">
         <HiOutlineBars3BottomLeft />
       </button>
-      <button onClick={onPlusClick} className="text-3xl text-gray-700">
+      <button onClick={onPlusClick} className="text-3xl">
         <HiPlus />
       </button>
     </div>
