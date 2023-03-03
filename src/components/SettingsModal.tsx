@@ -1,5 +1,6 @@
 import { useStore } from "./Store";
-import { FaCog, FaTimes } from "react-icons/fa";
+import { FaCog } from "react-icons/fa";
+import { IoCloseOutline } from "react-icons/io5";
 import Modal from "./Modal";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
@@ -20,7 +21,7 @@ export default function SettingsModal() {
           onClick={() => setShowSettings(false)}
           className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-300 text-gray-700 flex items-center justify-center hover:text-gray-800 hover:brightness-95 active:brightness-90"
         >
-          <FaTimes />
+          <IoCloseOutline />
         </button>
       </div>
       {/* Header END */}
