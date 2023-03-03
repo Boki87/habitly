@@ -16,6 +16,9 @@ module.exports = {
         'app-blue': '#A3DDDD',
         'app-ice': '#ADCECE',
       },
+      screens: {
+        standalone: { raw: "(display-mode: standalone)" }
+      }
     },
   },
   plugins: [],

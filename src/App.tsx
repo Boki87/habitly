@@ -33,7 +33,7 @@ export default function App() {
           setShowHabitModal(true);
         }}
       />
-      <div className="w-full h-full pt-20 flex flex-col">
+      <div className="w-full h-full pt-20 standalone:pt-32 flex flex-col">
         <DayOfWeekPicker
           selectedDate={selectedDate}
           onDateChange={changeDateHandler}

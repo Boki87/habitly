@@ -7,6 +7,12 @@ html, body, #root {
     height: 100%;
 }
 
+@media (display-mode: standalone) {
+    html, body, #root {
+        height: calc(100% + 16px);
+    }
+}
+
 :root {
         --color-green: #BCE29E;
         --color-lime: #E5EBB2;
