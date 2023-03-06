@@ -11,7 +11,7 @@ export class HabitlyDB extends Dexie {
     super("HabitlyDB");
     this.version(1).stores({
       habits: "++id",
-      habitEntries: "++id, habitId",
+      habitEntries: "++id, habitId, date",
     });
   }
 }

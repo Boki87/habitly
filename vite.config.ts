@@ -16,8 +16,8 @@ export default defineConfig({
       manifest: {
         name: "Habitly",
         short_name: "Habitly",
-        theme_color: "#FFFFFF",
-        background_color: "#FFFFFF",
+        theme_color: "#1F2937",
+        background_color: "#1F2937",
         start_url: "/",
         display: "standalone",
         orientation: "portrait-primary",

@@ -2,6 +2,8 @@ import { db } from "@/models/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import HabitCard from "@/components/HabitCard";
 import { Habit } from "@/types/Habit";
+import { startOfWeek } from "date-fns";
+import { useStore } from "./Store";
 
 export default function HabitList({
   selectedDate,
@@ -10,11 +12,21 @@ export default function HabitList({
   selectedDate: Date;
   onSelectHabit: (v: Habit) => void;
 }) {
+  const { startOfWeek: weekStartsOn } = useStore();
+
+  //get first day of week
+  const d = new Date();
+  const firstDay = startOfWeek(d, { weekStartsOn });
+
   const habits = useLiveQuery(() => db.habits.toArray());
-  const habitEntries = useLiveQuery(() => db.habitEntries.toArray());
+
+  //query only habit entries for current week
+  const habitEntries = useLiveQuery(() =>
+    db.habitEntries.where("date").aboveOrEqual(firstDay).toArray()
+  );
 
   return (
-    <div className="px-4 flex-1 overflow-auto">
+    <div className="px-4 flex-1 overflow-auto pb-10">
       {habits?.map((habit) => {
         return (
           <HabitCard

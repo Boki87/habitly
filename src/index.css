@@ -3,22 +3,27 @@
 @tailwind utilities;
 
 
-html, body, #root {
-    height: 100%;
-}
-
-@media (display-mode: standalone) {
-    html, body, #root {
-        height: calc(100% + 16px);
-    }
-}
-
 :root {
-        --color-green: #BCE29E;
-        --color-lime: #E5EBB2;
-        --color-rose: #F8C4B4;
+        --color-green: #a4c68a;
+        --color-lime: #d2da8e;
+        --color-rose: #c79e91;
         --color-pink: #FF8787;
-        --color-brown: #FEBE8C;
-        --color-blue: #A3DDDD;
-        --color-ice: #ADCECE
+        --color-brown: #e7a675;
+        --color-blue: #4ea7a7;
+        --color-ice: #86b6b6;
+        --notch: 0px; 
+}
+
+html, body, #root {
+   height: 100%; 
+}
+
+
+@media only screen and (orientation: portrait) and (display-mode: standalone) {
+    html, body, #root {
+        height: calc(100% + (env(safe-area-inset-top) - env(safe-area-inset-bottom)) + 5px);
+    }
+    :root {
+        --notch: env(safe-area-inset-top);
+    }
 }

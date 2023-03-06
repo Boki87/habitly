@@ -34,6 +34,7 @@ export default function App() {
         }}
       />
       <div className="w-full h-full pt-20 standalone:pt-32 flex flex-col">
+        {" "}
         <DayOfWeekPicker
           selectedDate={selectedDate}
           onDateChange={changeDateHandler}
