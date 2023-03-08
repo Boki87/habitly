@@ -11,15 +11,14 @@ import { HabitEntry } from "@/types/HabitEntry";
 import { isSameDay } from "date-fns";
 import { FaCheck } from "react-icons/fa";
 import { db } from "@/models/db";
-import ConfettiExplosion, { ConfettiProps } from "react-confetti-explosion";
 
-const mediumProps: ConfettiProps = {
-  force: 0.6,
-  duration: 2500,
-  particleCount: 100,
-  width: 800,
-  colors: ["#BCE29E", "#E5EBB2", "#F8C4B4", "#FF8787", "#FEBE8C", "#A3DDDD"],
-};
+// const mediumProps: ConfettiProps = {
+//   force: 0.6,
+//   duration: 2500,
+//   particleCount: 100,
+//   width: 800,
+//   colors: ["#BCE29E", "#E5EBB2", "#F8C4B4", "#FF8787", "#FEBE8C", "#A3DDDD"],
+// };
 
 interface IHabitCard {
   weeklyData?: HabitEntry[];
@@ -36,7 +35,6 @@ export default function HabitCard({
 }: IHabitCard) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [progressSize, setProgressSize] = useState(40);
-  const [isConfettiExploding, setIsConfettiExploding] = useState(false);
 
   const entries = useMemo(
     () => weeklyData?.filter((e) => e.habitId === habit.id) || [],
@@ -84,14 +82,6 @@ export default function HabitCard({
       setProgressSize(w > 40 ? w : 40);
     }
   }, [containerRef, weeklyData]);
-
-  useEffect(() => {
-    if (entries.length >= habit.freq) {
-      setIsConfettiExploding(true);
-    } else {
-      setIsConfettiExploding(false);
-    }
-  }, [entries, habit.freq]);
 
   return (
     <div
@@ -145,9 +135,7 @@ export default function HabitCard({
             }}
             color={habit.color}
             isChecked={isChecked}
-          >
-            {isConfettiExploding && <ConfettiExplosion {...mediumProps} />}
-          </CheckBoxButton>
+          ></CheckBoxButton>
         </div>
         <p className="text-gray-600 dark:text-gray-100 truncate">
           {habit.desc}

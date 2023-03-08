@@ -26,8 +26,8 @@ export default function Modal({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: "100%" }}
         transition={{ duration: 0.3 }}
-        className={`min-w-full bottom-0 left-0 bg-white dark:bg-gray-700 absolute z-50 ${
-          isFull ? "min-h-full" : "min-h-[95%] rounded-t-lg"
+        className={`min-w-full bottom-0 left-0 bg-white overflow-auto dark:bg-gray-700 absolute z-50 ${
+          isFull ? "h-full" : "h-[95%] rounded-t-lg"
         } `}
       >
         {children && children}

@@ -9,6 +9,8 @@ import Toggle from "./Toggle";
 import { FaTrash } from "react-icons/fa";
 import { format } from "date-fns";
 import { colors } from "./ColorPicker";
+import { useLiveQuery } from "dexie-react-hooks";
+import { startOfWeek } from "date-fns";
 
 const emptyHabit = {
   title: "",
@@ -18,10 +20,19 @@ const emptyHabit = {
   useReminder: false,
   reminderTime: "",
   reminderText: "",
+  order_index: 0,
 };
 
 export default function NewHabitForm() {
-  const { activeHabit, setShowHabitModal, showHabitModal } = useStore();
+  const {
+    activeHabit,
+    setShowHabitModal,
+    showHabitModal,
+    startOfWeek: weekStartsOn,
+  } = useStore();
+
+  const habits = useLiveQuery(() => db.habits.toArray());
+
   const [habitState, setHabitState] = useState<Habit>(
     activeHabit || emptyHabit
   );
@@ -44,8 +55,14 @@ export default function NewHabitForm() {
 
   function submitHandler(e: FormEvent) {
     e.preventDefault();
+    if (!habits) return;
     if (!activeHabit) {
-      db.habits.add(habitState);
+      const allOrderIndexes = habits.map((h) => {
+        return h.order_index;
+      });
+      console.log(allOrderIndexes);
+      let next_order_index = Math.max(...allOrderIndexes) + 1;
+      db.habits.add({ ...habitState, order_index: next_order_index });
     } else {
       if (!activeHabit.id) return;
       db.habits.update(activeHabit.id, habitState);

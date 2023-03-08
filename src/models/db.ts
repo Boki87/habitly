@@ -28,5 +28,6 @@ db.on("populate", async () => {
     useReminder: false,
     reminderTime,
     reminderText: "",
+    order_index: 0,
   });
 });

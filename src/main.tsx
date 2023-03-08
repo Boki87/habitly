@@ -18,9 +18,7 @@ const updateSW = registerSW({
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <Store>
-      <App />
-    </Store>
-  </React.StrictMode>
+  <Store>
+    <App />
+  </Store>
 );

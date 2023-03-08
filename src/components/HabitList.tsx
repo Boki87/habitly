@@ -14,7 +14,7 @@ export default function HabitList({
 }) {
   const { startOfWeek: weekStartsOn } = useStore();
 
-  //get first day of week
+  //get first day of current week
   const d = new Date();
   const firstDay = startOfWeek(d, { weekStartsOn });
 
@@ -27,17 +27,21 @@ export default function HabitList({
 
   return (
     <div className="px-4 flex-1 overflow-auto pb-10">
-      {habits?.map((habit) => {
-        return (
-          <HabitCard
-            onSelect={onSelectHabit}
-            weeklyData={habitEntries}
-            habit={habit}
-            selectedDate={selectedDate}
-            key={habit.id}
-          />
-        );
-      })}
+      {habits
+        ?.sort((a, b) => {
+          return a.order_index - b.order_index;
+        })
+        .map((habit) => {
+          return (
+            <HabitCard
+              onSelect={onSelectHabit}
+              weeklyData={habitEntries}
+              habit={habit}
+              selectedDate={selectedDate}
+              key={habit.id}
+            />
+          );
+        })}
     </div>
   );
 }
