@@ -41,7 +41,9 @@ export default function SettingsModal() {
     if (!active || !over) return;
     if (active.id !== over.id) {
       let oldIndexes = habits.map((h) => h.id);
+      //@ts-expect-error
       const activeIndex = oldIndexes.indexOf(active.id);
+      //@ts-expect-error
       const overIndex = oldIndexes.indexOf(over.id);
       let newIndexes = arrayMove(oldIndexes, activeIndex, overIndex);
       const newHabits: any[] = [];
@@ -82,7 +84,7 @@ export default function SettingsModal() {
           >
             {habits && (
               <SortableContext
-                items={habits.map((h) => h.id)}
+                items={habits.map((h, i) => h.id || i + 1)}
                 strategy={verticalListSortingStrategy}
               >
                 {/* We need components that use the useSortable hook */}
