@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/models/db";
+import {MdOutlineDragIndicator} from 'react-icons/md'
 import {
   DndContext,
   closestCenter,
@@ -106,9 +107,6 @@ export default function SettingsModal() {
 }
 
 function SortableItem(props: any) {
-  // props.id
-  // JavaScript
-
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: props.id });
 
@@ -119,11 +117,14 @@ function SortableItem(props: any) {
 
   return (
     <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      <div
-        className="w-full h-10 rounded-lg my-3 flex items-center px-2 text-gray-800"
-        style={{ background: `var(--color-${props.color})` }}
-      >
-        {props.title}
+      <div className="w-full h-12 rounded-lg my-3 relative overflow-hidden">
+        <div style={{ background: `var(--color-${props.color})`, position: "absolute", left:"0px", top:"0px", width:"100%", height: "100%", opacity: 0.6 }}></div>
+        <div className="absolute top-0 left-0 w-full h-full flex items-center px-2">
+        <MdOutlineDragIndicator />
+        <span className="ml-2 text-gray-900">
+          {props.title}
+        </span>
+        </div>
       </div>
     </div>
   );
