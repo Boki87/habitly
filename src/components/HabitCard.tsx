@@ -12,14 +12,6 @@ import { isSameDay } from "date-fns";
 import { FaCheck } from "react-icons/fa";
 import { db } from "@/models/db";
 
-// const mediumProps: ConfettiProps = {
-//   force: 0.6,
-//   duration: 2500,
-//   particleCount: 100,
-//   width: 800,
-//   colors: ["#BCE29E", "#E5EBB2", "#F8C4B4", "#FF8787", "#FEBE8C", "#A3DDDD"],
-// };
-
 interface IHabitCard {
   weeklyData?: HabitEntry[];
   habit: Habit;

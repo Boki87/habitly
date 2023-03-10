@@ -10,7 +10,8 @@ import { FaTrash } from "react-icons/fa";
 import { format } from "date-fns";
 import { colors } from "./ColorPicker";
 import { useLiveQuery } from "dexie-react-hooks";
-import { startOfWeek } from "date-fns";
+import { AnimatePresence, motion } from "framer-motion";
+import { IoBarChartSharp } from "react-icons/io5";
 
 const emptyHabit = {
   title: "",
@@ -21,9 +22,16 @@ const emptyHabit = {
   reminderTime: "",
   reminderText: "",
   order_index: 0,
+  createdAt: new Date(),
 };
 
-export default function NewHabitForm() {
+export default function NewHabitForm({
+  onSectionChange,
+  isInitialOpen,
+}: {
+  onSectionChange: (val: "form" | "stats") => void;
+  isInitialOpen?: boolean;
+}) {
   const {
     activeHabit,
     setShowHabitModal,
@@ -97,7 +105,13 @@ export default function NewHabitForm() {
   }, [showHabitModal, activeHabit]);
 
   return (
-    <div className="w-full">
+    <motion.div
+      animate={{ x: 0, opacity: 1 }}
+      initial={{ x: "-100%", opacity: 0 }}
+      exit={{ x: "100%", opacity: 0 }}
+      transition={{ duration: isInitialOpen ? 0 : 0.2 }}
+      className="w-full"
+    >
       <form onSubmit={submitHandler}>
         {/* HABIT Header */}
         <div className="flex justify-between items-center h-12 mb-4">
@@ -195,7 +209,8 @@ export default function NewHabitForm() {
         </div>
         {/* Habit Frequency END */}
         {/* Reminder toggle */}
-        <div className="flex px-4 h-20 mb-3">
+        {/* NOTE: DISABLED FOR NOW, enable after proper implementation */}
+        <div className="flex px-4 h-20 mb-3 pointer-events-none opacity-40">
           <div className="flex flex-col h-full flex-1 justify-center">
             <span className="text-2xl text-gray-700 dark:text-white font-bold">
               Reminder
@@ -210,30 +225,39 @@ export default function NewHabitForm() {
         </div>
         {/* Reminder toggle END */}
 
-        <div className="flex px-4">
-          <Input
-            value={habitState.reminderTime || ""}
-            onChange={(e: SyntheticEvent) => {
-              const input = e.target as HTMLInputElement;
-              setHabitState((old) => {
-                return { ...old, reminderTime: input.value };
-              });
-            }}
-            type="time"
-            style={{ width: "200px", marginRight: "10px" }}
-          />
-          <Input
-            value={habitState.reminderText}
-            onInput={(e: SyntheticEvent) => {
-              const input = e.target as HTMLInputElement;
-              setHabitState((old) => {
-                return { ...old, reminderText: input.value };
-              });
-            }}
-            type="text"
-            placeholder="Reminder text"
-          />
-        </div>
+        <AnimatePresence>
+          {habitState.useReminder && (
+            <motion.div
+              animate={{ height: "auto", opacity: 1 }}
+              initial={{ height: "0px", opacity: 0 }}
+              exit={{ height: "0px", opacity: 0 }}
+              className="flex px-4"
+            >
+              <Input
+                value={habitState.reminderTime || ""}
+                onChange={(e: SyntheticEvent) => {
+                  const input = e.target as HTMLInputElement;
+                  setHabitState((old) => {
+                    return { ...old, reminderTime: input.value };
+                  });
+                }}
+                type="time"
+                style={{ width: "200px", marginRight: "10px" }}
+              />
+              <Input
+                value={habitState.reminderText}
+                onInput={(e: SyntheticEvent) => {
+                  const input = e.target as HTMLInputElement;
+                  setHabitState((old) => {
+                    return { ...old, reminderText: input.value };
+                  });
+                }}
+                type="text"
+                placeholder="Reminder text"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </form>
       {activeHabit && (
         <div className="px-4">
@@ -244,8 +268,14 @@ export default function NewHabitForm() {
             <FaTrash />
             <span className="ml-2">DELETE</span>
           </button>
+          <button
+            onClick={() => onSectionChange("stats")}
+            className="h-10 w-full flex items-center justify-center bg-gray-200 dark:bg-white my-3 rounded-lg text-gray-700 active:brightness-90 hover:brightness-95"
+          >
+            <IoBarChartSharp />
+          </button>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

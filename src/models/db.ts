@@ -29,5 +29,6 @@ db.on("populate", async () => {
     reminderTime,
     reminderText: "",
     order_index: 0,
+    createdAt: new Date(),
   });
 });

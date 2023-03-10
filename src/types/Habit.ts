@@ -8,4 +8,5 @@ export type Habit = {
   useReminder: boolean;
   reminderTime?: string | null;
   reminderText?: string;
+  createdAt?: Date;
 };
