@@ -12,6 +12,7 @@ import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { HabitEntry } from "@/types/HabitEntry";
 import { Habit } from "@/types/Habit";
+import { colors } from "./ColorPicker";
 
 export default function DayOfWeekPicker({
   selectedDate,
@@ -66,6 +67,7 @@ export default function DayOfWeekPicker({
             entries={habitEntries || []}
             habits={habits || []}
             onChangeDate={onDateChangeHandler}
+            index={i}
             key={i}
           />
         ))}
@@ -79,12 +81,14 @@ function WeekDay({
   selectedDate,
   entries,
   habits,
+  index,
   onChangeDate,
 }: {
   dayIter: Date;
   selectedDate: Date;
   entries: HabitEntry[];
   habits: Habit[];
+  index?: number;
   onChangeDate: (v: Date) => void;
 }) {
   const d = new Date();
@@ -97,9 +101,15 @@ function WeekDay({
     let entriesForIterDay = entries.filter((ent) =>
       isSameDay(ent.date, dayIter)
     );
-    let percentage = (entriesForIterDay?.length / habits?.length) * 100;
+    let percentage =
+      entriesForIterDay.length > 0
+        ? (entriesForIterDay?.length / habits?.length) * 100
+        : 0;
     return Math.round(percentage);
   }, [entries, habits]);
+
+  const colors_ext = [...colors, "ice"];
+  const bg = `var(--color-${colors_ext[index || 0]})`;
 
   return (
     <div
@@ -112,7 +122,8 @@ function WeekDay({
     >
       <motion.div
         animate={{ height: `${percentCheckedForSelectedDate}%` }}
-        className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-blue-200 dark:from-cyan-400 to-cyan-400 dark:to-blue-500 rounded-md"
+        className="absolute bottom-0 left-0 w-full rounded-md"
+        style={{ background: bg }}
       ></motion.div>
 
       <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-30">
@@ -120,7 +131,7 @@ function WeekDay({
           className={
             isSelectedDay
               ? `text-gray-700 dark:text-gray-50 text-lg font-bold`
-              : "text-gray-500 dark:text-gray-200 text-sm"
+              : "text-gray-700 dark:text-gray-50 text-sm"
           }
         >
           {format(dayIter, "EE")}
