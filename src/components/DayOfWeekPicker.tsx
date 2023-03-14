@@ -112,15 +112,15 @@ function WeekDay({
     >
       <motion.div
         animate={{ height: `${percentCheckedForSelectedDate}%` }}
-        className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-blue-300 dark:from-cyan-600 to-cyan-300 dark:to-blue-700 rounded-md"
+        className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-blue-200 dark:from-cyan-400 to-cyan-400 dark:to-blue-500 rounded-md"
       ></motion.div>
 
       <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center z-30">
         <div
           className={
             isSelectedDay
-              ? `text-gray-700 dark:text-gray-100 text-lg font-bold`
-              : "text-gray-500 dark:text-gray-300 text-sm"
+              ? `text-gray-700 dark:text-gray-50 text-lg font-bold`
+              : "text-gray-500 dark:text-gray-200 text-sm"
           }
         >
           {format(dayIter, "EE")}
@@ -132,8 +132,8 @@ function WeekDay({
               ? "text-4xl font-extrabold text-gray-800 dark:text-white scale-125 transition-all duration-200"
               : `text-xl ${
                   isToday
-                    ? "text-gray-800 dark:text-gray-300 font-bold"
-                    : "text-gray-700 dark:text-gray-300 font-bold"
+                    ? "text-gray-800 dark:text-white font-bold"
+                    : "text-gray-700 dark:text-gray-100 font-bold"
                 }`
           }
         >
