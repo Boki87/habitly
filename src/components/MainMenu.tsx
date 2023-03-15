@@ -3,6 +3,7 @@ import { FaCog } from "react-icons/fa";
 import { CgReorder } from "react-icons/cg";
 import { CiImport, CiExport } from "react-icons/ci";
 import { useStore } from "./Store";
+import bmc from "../assets/bmc.png";
 
 export default function MainMenu() {
   const { setShowSettings, setShowOrdering } = useStore();
@@ -44,6 +45,24 @@ export default function MainMenu() {
           </span>
         </div>
       ))}
+      <div className="absolute bottom-0 left-0 w-full h-12 flex items-center justify-start px-4">
+        <a
+          href="https://www.buymeacoffee.com/bokicodes"
+          target="_blank"
+          className="flex h-9 px-3 py-3 bg-gray-200 rounded-md items-center justify-center text-gray-800 active:brightness-80 hover:brightness-95"
+        >
+          <img src={bmc} className="h-7 mr-2" />
+          <span>By me a coffee</span>
+        </a>
+        <a
+          href="https://github.com/Boki87/habitly"
+          target="_blank"
+          className="flex h-9 px-3 py-3 bg-gray-200 rounded-md items-center justify-center text-gray-800 active:brightness-80 hover:brightness-95 ml-2"
+        >
+          <BsGithub size={25} />
+          <span className="text-md ml-2">Repo</span>
+        </a>
+      </div>
     </div>
   );
 }
