@@ -45,19 +45,21 @@ export default function MainMenu() {
           </span>
         </div>
       ))}
-      <div className="absolute bottom-0 left-0 w-full h-12 flex items-center justify-start px-4">
+      <div className="w-full h-12 flex items-center justify-start px-4 flex-wrap">
         <a
           href="https://www.buymeacoffee.com/bokicodes"
           target="_blank"
-          className="flex h-9 px-3 py-3 bg-gray-200 rounded-md items-center justify-center text-gray-800 active:brightness-80 hover:brightness-95"
+          className="flex h-9 px-3 py-3 bg-gray-200 rounded-md items-center justify-center text-gray-800 active:brightness-80 hover:brightness-95 min-w-[100px]"
         >
           <img src={bmc} className="h-7 mr-2" />
           <span>By me a coffee</span>
         </a>
+      </div>
+      <div className="w-full h-12 flex items-center justify-start px-4 flex-wrap">
         <a
           href="https://github.com/Boki87/habitly"
           target="_blank"
-          className="flex h-9 px-3 py-3 bg-gray-200 rounded-md items-center justify-center text-gray-800 active:brightness-80 hover:brightness-95 ml-2"
+          className="flex h-9 px-3 py-3 bg-gray-200 rounded-md items-center justify-center text-gray-800 active:brightness-80 hover:brightness-95"
         >
           <BsGithub size={25} />
           <span className="text-md ml-2">Repo</span>
