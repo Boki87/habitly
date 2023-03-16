@@ -42,4 +42,4 @@ TODO:
 - [ ] Add todo lists for individual habits
 - [ ] Figure out how to implement reminders (not sure if possible in a totally offline PWA)
       Maybe at some point add a server to handle that
-- [ ] Option trash all habits
+- [ ] Option to trash all habits
