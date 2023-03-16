@@ -49,7 +49,7 @@ export default function MainMenu() {
         <a
           href="https://www.buymeacoffee.com/bokicodes"
           target="_blank"
-          className="flex h-9 px-3 py-3 bg-gray-200 rounded-md items-center justify-start text-gray-800 active:brightness-80 hover:brightness-95 min-w-[140px]"
+          className="flex h-9 px-3 py-3 bg-gray-200 rounded-md items-center justify-start text-gray-800 active:brightness-80 hover:brightness-95 min-w-[200px]"
         >
           <img src={bmc} className="h-7 mr-2" />
           <span>By me a coffee</span>
@@ -59,7 +59,7 @@ export default function MainMenu() {
         <a
           href="https://github.com/Boki87/habitly"
           target="_blank"
-          className="flex h-9 px-3 py-3 bg-gray-200 rounded-md items-center justify-start text-gray-800 active:brightness-80 hover:brightness-95 min-w-[140px]"
+          className="flex h-9 px-3 py-3 bg-gray-200 rounded-md items-center justify-start text-gray-800 active:brightness-80 hover:brightness-95 min-w-[200px]"
         >
           <BsGithub size={25} />
           <span className="text-md ml-2">Repo</span>
