@@ -69,7 +69,6 @@ export default function NewHabitForm({
       const allOrderIndexes = habits.map((h) => {
         return h.order_index;
       });
-      console.log(allOrderIndexes);
       let next_order_index = Math.max(...allOrderIndexes) + 1;
       db.habits.add({ ...habitState, order_index: next_order_index });
     } else {
