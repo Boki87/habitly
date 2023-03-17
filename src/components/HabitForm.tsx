@@ -11,7 +11,8 @@ import { format } from "date-fns";
 import { colors } from "./ColorPicker";
 import { useLiveQuery } from "dexie-react-hooks";
 import { AnimatePresence, motion } from "framer-motion";
-import { IoBarChartSharp } from "react-icons/io5";
+import { BsCalendar4Week } from "react-icons/bs";
+import { HiArrowLongRight } from "react-icons/hi2";
 
 const emptyHabit = {
   title: "",
@@ -262,17 +263,20 @@ export default function NewHabitForm({
       {activeHabit && (
         <div className="px-4">
           <button
+            onClick={() => onSectionChange("stats")}
+            className="h-10 w-full flex items-center justify-center bg-gray-200 dark:bg-white my-3 rounded-lg text-gray-700 active:brightness-90 hover:brightness-95 relative"
+          >
+            <BsCalendar4Week size={25} />
+            <div className="absolute right-0 top-0 h-full flex items-center justify-center px-2">
+              <HiArrowLongRight size={25} />
+            </div>
+          </button>
+          <button
             onClick={deleteHabit}
-            className="h-10 w-full flex items-center justify-center bg-red-200 my-3 rounded-lg text-gray-700 active:brightness-90 hover:brightness-95"
+            className="h-10 w-full flex items-center justify-center bg-red-400 my-3 rounded-lg text-gray-50 active:brightness-90 hover:brightness-95"
           >
             <FaTrash />
             <span className="ml-2">DELETE</span>
-          </button>
-          <button
-            onClick={() => onSectionChange("stats")}
-            className="h-10 w-full flex items-center justify-center bg-gray-200 dark:bg-white my-3 rounded-lg text-gray-700 active:brightness-90 hover:brightness-95"
-          >
-            <IoBarChartSharp />
           </button>
         </div>
       )}

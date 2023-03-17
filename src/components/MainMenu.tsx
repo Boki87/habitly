@@ -25,14 +25,14 @@ export default function MainMenu() {
     },
     {
       icon: <CiImport />,
-      title: "Import Habits",
+      title: "Import",
       action: () => {
         fileRef?.current?.click();
       },
     },
     {
       icon: <CiExport />,
-      title: "Export Habits",
+      title: "Export",
       action: () => exportData(),
     },
   ];
