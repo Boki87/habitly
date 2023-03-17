@@ -5,9 +5,20 @@ import Modal from "./Modal";
 import { useState } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import ThemeToggle from "./ThemeToggle";
+import { db } from "@/models/db";
 
 export default function SettingsModal() {
   const { setShowSettings, setStartOfWeek, startOfWeek } = useStore();
+
+  async function deleteAll() {
+    const r = window.confirm(
+      "This action is irreversible! Are you sure you want to delete all of your data??"
+    );
+    if (!r) return;
+
+    await db.habitEntries.clear();
+    await db.habits.clear();
+  }
 
   return (
     <Modal onClose={() => setShowSettings(false)}>
@@ -59,6 +70,14 @@ export default function SettingsModal() {
           <div>
             <ThemeToggle />
           </div>
+        </div>
+        <div className="h-16 w-full border border-gray-150 dark:border-gray-600 rounded-lg flex items-center justify-center px-2 py-2 mb-4">
+          <button
+            onClick={deleteAll}
+            className="bg-red-500 text-white h-10 px-4 rounded-md flex items-center justify-center hover:brightness-95 active:brightness-90"
+          >
+            DELETE ALL DATA
+          </button>
         </div>
       </div>
     </Modal>

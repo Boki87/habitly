@@ -4,6 +4,7 @@ import HabitCard from "@/components/HabitCard";
 import { Habit } from "@/types/Habit";
 import { startOfWeek } from "date-fns";
 import { useStore } from "./Store";
+import GoodHabitsPng from "../assets/good-habits.png";
 
 export default function HabitList({
   selectedDate,
@@ -12,7 +13,7 @@ export default function HabitList({
   selectedDate: Date;
   onSelectHabit: (v: Habit) => void;
 }) {
-  const { startOfWeek: weekStartsOn } = useStore();
+  const { startOfWeek: weekStartsOn, setShowHabitModal } = useStore();
 
   //get first day of current week
   const d = new Date();
@@ -27,6 +28,17 @@ export default function HabitList({
 
   return (
     <div className="px-4 flex-1 overflow-auto pb-10">
+      {habits?.length === 0 && (
+        <div
+          onClick={() => setShowHabitModal(true)}
+          className="text-center cursor-pointer"
+        >
+          <p className="text-center text-xl font-bold text-gray-700 dark:text-gray-100">
+            Lets create some habits
+          </p>
+          <img src={GoodHabitsPng} className="w-72 max-w-full mx-auto mt-8" />
+        </div>
+      )}
       {habits
         ?.sort((a, b) => {
           return a.order_index - b.order_index;
