@@ -37,9 +37,9 @@ What it can do:
 
 TODO:
 
-- [ ] Import/Export of habits
-- [ ] Archive habits
+- [x] Import/Export of habits
+- [x] Archive habits
 - [ ] Add todo lists for individual habits
 - [ ] Figure out how to implement reminders (not sure if possible in a totally offline PWA)
       Maybe at some point add a server to handle that
-- [ ] Option to trash all habits
+- [x] Option to trash all habits
